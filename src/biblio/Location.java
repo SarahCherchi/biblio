@@ -1,31 +1,42 @@
 package biblio;
 
-public class Location {
-    private String dateLoc;
-    private String dateRestitution;
-    private double amende;
-    private Lecteur lec;
-    private Exemplaire expl;
+import java.time.LocalDate;
+import java.util.Objects;
 
-    public Location(String dateLoc, String dateRestitution, double amende) {
+public class Location {
+    private LocalDate dateLoc;
+    private LocalDate dateRestitution;
+    private double amende;
+    private Lecteur loueur;
+    private Exemplaire exemplaire;
+
+    public Location(LocalDate dateLoc, LocalDate dateRestitution, Lecteur loueur, Exemplaire exemplaire) {
+        this.dateLoc = dateLoc;
+        this.dateRestitution = dateRestitution;
+        this.loueur = loueur;
+        this.exemplaire = exemplaire;
+    }
+    public Location(LocalDate dateLoc, LocalDate dateRestitution, double amende,Lecteur loueur, Exemplaire exemplaire) {
         this.dateLoc = dateLoc;
         this.dateRestitution = dateRestitution;
         this.amende = amende;
+        this.loueur = loueur;
+        this.exemplaire = exemplaire;
     }
 
-    public String getDateLoc() {
+    public LocalDate getDateLoc() {
         return dateLoc;
     }
 
-    public void setDateLoc(String dateLoc) {
+    public void setDateLoc(LocalDate dateLoc) {
         this.dateLoc = dateLoc;
     }
 
-    public String getDateRestitution() {
+    public LocalDate getDateRestitution() {
         return dateRestitution;
     }
 
-    public void setDateRestitution(String dateRestitution) {
+    public void setDateRestitution(LocalDate dateRestitution) {
         this.dateRestitution = dateRestitution;
     }
 
@@ -37,30 +48,42 @@ public class Location {
         this.amende = amende;
     }
 
-    public Lecteur getLec() {
-        return lec;
+    public Lecteur getLoueur() {
+        return loueur;
     }
 
-    public void setLec(Lecteur lec) {
-        this.lec = lec;
+    public void setLoueur(Lecteur loueur) {
+        this.loueur = loueur;
     }
 
-    public Exemplaire getExpl() {
-        return expl;
+    public Exemplaire getExemplaire() {
+        return exemplaire;
     }
 
-    public void setExpl(Exemplaire expl) {
-        this.expl = expl;
+    public void setExemplaire(Exemplaire exemplaire) {
+        this.exemplaire = exemplaire;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Location location = (Location) o;
+        return Objects.equals(dateLoc, location.dateLoc) && Objects.equals(loueur, location.loueur) && Objects.equals(exemplaire, location.exemplaire);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(dateLoc, loueur, exemplaire);
     }
 
     @Override
     public String toString() {
         return "Location{" +
-                "dateLoc='" + dateLoc + '\'' +
-                ", dateRestitution='" + dateRestitution + '\'' +
-                ", amende=" + amende +
+                "dateLocation=" + dateLoc +
+                ", dateRestitution=" + dateRestitution +
+                ", loueur=" + loueur +
+                ", exemplaire=" + exemplaire +
                 '}';
     }
-
-
 }

@@ -1,18 +1,19 @@
 package biblio;
 
+import java.time.LocalDate;
 import java.util.Objects;
 
 public class Livre extends Ouvrage{
     private String isbn;
     private int nombrePages;
-    private String typeLivre;
+    private TypeLivre tl;
     private String resume;
 
-    public Livre(String titre, int ageMin, String dateParution, String typeOuvrage, double prixLocation, String langue, String genre, String isbn, int nombrePages, String typeLivre, String resume) {
-        super(titre, ageMin, dateParution, typeOuvrage, prixLocation, langue, genre);
+    public Livre(String titre, int ageMin, LocalDate dateParution, double prixLocation, String langue, String genre, String isbn, int nombrePages, TypeLivre tl, String resume) {
+        super(titre, ageMin, dateParution, TypeOuvrage.LIVRE, prixLocation, langue, genre);
         this.isbn = isbn;
         this.nombrePages = nombrePages;
-        this.typeLivre = typeLivre;
+        this.tl=tl;
         this.resume = resume;
     }
 
@@ -32,14 +33,13 @@ public class Livre extends Ouvrage{
         this.nombrePages = nombrePages;
     }
 
-    public String getTypeLivre() {
-        return typeLivre;
+    public TypeLivre getTl() {
+        return tl;
     }
 
-    public void setTypeLivre(String typeLivre) {
-        this.typeLivre = typeLivre;
+    public void setTl(TypeLivre tl) {
+        this.tl = tl;
     }
-
     public String getResume() {
         return resume;
     }
@@ -50,12 +50,12 @@ public class Livre extends Ouvrage{
 
     @Override
     public String toString() {
-        return "Livre{" +
+        return super.toString()+ "Livre{" +
                 "isbn='" + isbn + '\'' +
-                ", nombrePages=" + nombrePages +
-                ", typeLivre='" + typeLivre + '\'' +
+                ", nbrePages=" + nombrePages +
+                ", tl=" + tl +
                 ", resume='" + resume + '\'' +
-                '}';
+                "} " + super.toString();
     }
 
     @Override

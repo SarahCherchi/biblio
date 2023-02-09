@@ -1,24 +1,25 @@
 package biblio;
 
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
 public abstract class Ouvrage {
     protected String titre;
     protected int ageMin;
-    protected String dateParution;
-    protected String typeOuvrage;
+    protected LocalDate dateParution;
+    protected TypeOuvrage to;
     protected double prixLocation;
     protected String langue;
     protected String genre;
     protected List<Exemplaire> lexpl = new ArrayList<>();
     protected List<Auteur> laut = new ArrayList<>();
 
-    public Ouvrage(String titre, int ageMin, String dateParution, String typeOuvrage, double prixLocation, String langue, String genre) {
+    public Ouvrage(String titre, int ageMin, LocalDate dateParution, TypeOuvrage to, double prixLocation, String langue, String genre) {
         this.titre = titre;
         this.ageMin = ageMin;
         this.dateParution = dateParution;
-        this.typeOuvrage = typeOuvrage;
+        this.to = to;
         this.prixLocation = prixLocation;
         this.langue = langue;
         this.genre = genre;
@@ -40,20 +41,20 @@ public abstract class Ouvrage {
         this.ageMin = ageMin;
     }
 
-    public String getDateParution() {
+    public LocalDate getDateParution() {
         return dateParution;
     }
 
-    public void setDateParution(String dateParution) {
+    public void setDateParution(LocalDate dateParution) {
         this.dateParution = dateParution;
     }
 
-    public String getTypeOuvrage() {
-        return typeOuvrage;
+    public TypeOuvrage getTo() {
+        return to;
     }
 
-    public void setTypeOuvrage(String typeOuvrage) {
-        this.typeOuvrage = typeOuvrage;
+    public void setTo(TypeOuvrage to) {
+        this.to = to;
     }
 
     public double getPrixLocation() {
@@ -102,7 +103,7 @@ public abstract class Ouvrage {
                 "titre='" + titre + '\'' +
                 ", ageMin=" + ageMin +
                 ", dateParution='" + dateParution + '\'' +
-                ", typeOuvrage='" + typeOuvrage + '\'' +
+                ", typeOuvrage='" + to + '\'' +
                 ", prixLocation=" + prixLocation +
                 ", langue='" + langue + '\'' +
                 ", genre='" + genre + '\'' +

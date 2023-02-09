@@ -1,30 +1,29 @@
 package biblio;
 
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
 public class DVD extends Ouvrage{
-    private String code;
+    private long code;
     private String dureeTotale;
-    private int nbreBonus;
+    private byte nbreBonus;
     private List<String> autresLangues = new ArrayList<>();
     private List<String> sousTitres = new ArrayList<>();
 
-    public DVD(String titre, int ageMin, String dateParution, String typeOuvrage, double prixLocation, String langue, String genre, String code, String dureeTotale, int nbreBonus, List<String> autresLangues, List<String> sousTitres) {
-        super(titre, ageMin, dateParution, typeOuvrage, prixLocation, langue, genre);
-        this.code = code;
-        this.dureeTotale = dureeTotale;
-        this.nbreBonus = nbreBonus;
-        this.autresLangues = autresLangues;
-        this.sousTitres = sousTitres;
+    public DVD(String titre, int ageMin, LocalDate dateParution, double prixLocation, String langue, String genre, long code, String dureeTotale, byte nbreBonus) {
+        super(titre, ageMin, dateParution, TypeOuvrage.DVD, prixLocation, langue, genre);
+        this.code=code;
+        this.dureeTotale=dureeTotale;
+        this.nbreBonus=nbreBonus;
     }
 
-    public String getCode() {
+    public long getCode() {
         return code;
     }
 
-    public void setCode(String code) {
+    public void setCode(long code) {
         this.code = code;
     }
 
@@ -36,11 +35,11 @@ public class DVD extends Ouvrage{
         this.dureeTotale = dureeTotale;
     }
 
-    public int getNbreBonus() {
+    public byte getNbreBonus() {
         return nbreBonus;
     }
 
-    public void setNbreBonus(int nbreBonus) {
+    public void setNbreBonus(byte nbreBonus) {
         this.nbreBonus = nbreBonus;
     }
 
@@ -62,13 +61,11 @@ public class DVD extends Ouvrage{
 
     @Override
     public String toString() {
-        return "DVD{" +
-                "code='" + code + '\'' +
+        return super.toString()+"DVD{" +
+                "code=" + code +
                 ", dureeTotale='" + dureeTotale + '\'' +
                 ", nbreBonus=" + nbreBonus +
-                ", autresLangues=" + autresLangues +
-                ", sousTitres=" + sousTitres +
-                '}';
+                "} " + super.toString();
     }
 
     @Override

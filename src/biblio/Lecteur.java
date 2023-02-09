@@ -1,34 +1,35 @@
 package biblio;
 
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
 public class Lecteur {
-    private String numLecteur;
+    private int numLecteur;
     private String nom;
     private String prenom;
-    private String dateNaiss;
+    private LocalDate dn;
     private String mail;
     private String adresse;
     private String tel;
     private List<Location> lloc = new ArrayList<>();
 
-    public Lecteur(String numLecteur, String nom, String prenom, String dateNaiss, String mail, String adresse, String tel) {
+    public Lecteur(int numLecteur, String nom, String prenom, LocalDate dn, String mail, String adresse, String tel) {
         this.numLecteur = numLecteur;
         this.nom = nom;
         this.prenom = prenom;
-        this.dateNaiss = dateNaiss;
+        this.dn = dn;
         this.mail = mail;
         this.adresse = adresse;
         this.tel = tel;
     }
 
-    public String getNumLecteur() {
+    public int getNumLecteur() {
         return numLecteur;
     }
 
-    public void setNumLecteur(String numLecteur) {
+    public void setNumLecteur(int numLecteur) {
         this.numLecteur = numLecteur;
     }
 
@@ -48,14 +49,13 @@ public class Lecteur {
         this.prenom = prenom;
     }
 
-    public String getDateNaiss() {
-        return dateNaiss;
+    public LocalDate getDn() {
+        return dn;
     }
 
-    public void setDateNaiss(String dateNaiss) {
-        this.dateNaiss = dateNaiss;
+    public void setDn(LocalDate dn) {
+        this.dn = dn;
     }
-
     public String getMail() {
         return mail;
     }
@@ -94,7 +94,7 @@ public class Lecteur {
                 "numLecteur='" + numLecteur + '\'' +
                 ", nom='" + nom + '\'' +
                 ", prenom='" + prenom + '\'' +
-                ", dateNaiss='" + dateNaiss + '\'' +
+                ", dn='" + dn + '\'' +
                 ", mail='" + mail + '\'' +
                 ", adresse='" + adresse + '\'' +
                 ", tel='" + tel + '\'' +

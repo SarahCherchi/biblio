@@ -11,9 +11,11 @@ public class Exemplaire {
     private Rayon rayon;
     private List<Location> lloc = new ArrayList<>();
 
-    public Exemplaire(String matricule, String descriptionEtat) {
+    public Exemplaire(String matricule, String descriptionEtat,Ouvrage ouvrage) {
         this.matricule = matricule;
-        this.descriptionEtat = descriptionEtat;
+        this.descriptionEtat=descriptionEtat;
+        this.ouvrage = ouvrage;
+        this.ouvrage.getLexpl().add(this);
     }
 
     public String getMatricule() {
@@ -45,7 +47,9 @@ public class Exemplaire {
     }
 
     public void setRayon(Rayon rayon) {
-        this.rayon = rayon;
+        if(this.rayon!=null) this.rayon.getLexp().remove(this);
+        this.rayon=rayon;
+        this.rayon.getLexp().add(this);
     }
 
     public List<Location> getLloc() {
@@ -61,6 +65,8 @@ public class Exemplaire {
         return "Exemplaire{" +
                 "matricule='" + matricule + '\'' +
                 ", descriptionEtat='" + descriptionEtat + '\'' +
+                ", ouvrage=" + ouvrage +
+                ", rayon=" + rayon +
                 '}';
     }
 

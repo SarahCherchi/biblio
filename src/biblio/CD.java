@@ -1,32 +1,33 @@
 package biblio;
 
+import java.time.LocalDate;
 import java.util.Objects;
 
 public class CD extends Ouvrage{
-    private String code;
-    private int nbrePlages;
+    private long code;
+    private byte nbrePlages;
     private String dureeTotale;
 
-    public CD(String titre, int ageMin, String dateParution, String typeOuvrage, double prixLocation, String langue, String genre, String code, int nbrePlages, String dureeTotale) {
-        super(titre, ageMin, dateParution, typeOuvrage, prixLocation, langue, genre);
+    public CD(String titre, int ageMin, LocalDate dateParution, double prixLocation, String langue, String genre, long code, byte nbrePlages, String dureeTotale) {
+        super(titre, ageMin, dateParution, TypeOuvrage.CD, prixLocation, langue, genre);
         this.code = code;
         this.nbrePlages = nbrePlages;
         this.dureeTotale = dureeTotale;
     }
 
-    public String getCode() {
+    public long getCode() {
         return code;
     }
 
-    public void setCode(String code) {
+    public void setCode(long code) {
         this.code = code;
     }
 
-    public int getNbrePlages() {
+    public byte getNbrePlages() {
         return nbrePlages;
     }
 
-    public void setNbrePlages(int nbrePlages) {
+    public void setNbrePlages(byte nbrePlages) {
         this.nbrePlages = nbrePlages;
     }
 
@@ -40,11 +41,11 @@ public class CD extends Ouvrage{
 
     @Override
     public String toString() {
-        return "CD{" +
-                "code='" + code + '\'' +
+        return super.toString()+"CD{" +
+                "code=" + code +
                 ", nbrePlages=" + nbrePlages +
                 ", dureeTotale='" + dureeTotale + '\'' +
-                '}';
+                "} " + super.toString();
     }
 
     @Override
