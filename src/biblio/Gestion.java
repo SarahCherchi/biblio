@@ -23,6 +23,12 @@ public class Gestion {
         System.out.println(e);
         System.out.println(lec);
         System.out.println(loc);
+        //exercice méthode d'ajout et supp d'ouvrage d'un auteur
+        a.suppOuvrage(l);
+        System.out.println(a);
+        a.ajoutOuvrage(l);
+        System.out.println(a);
+
     }
 
 }

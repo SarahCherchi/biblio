@@ -67,7 +67,15 @@ public class Auteur {
                 "nom='" + nom + '\'' +
                 ", prenom='" + prenom + '\'' +
                 ", nationalite='" + nationalite + '\'' +
+                ", louv=" + louv +
                 '}';
+    }
+
+    public void ajoutOuvrage(Ouvrage ouvrage) {
+        this.louv.add(ouvrage);
+    }
+    public void suppOuvrage(Ouvrage ouvrage){
+        this.louv.remove(ouvrage);
     }
 
 }
