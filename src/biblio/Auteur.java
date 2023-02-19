@@ -67,15 +67,33 @@ public class Auteur {
                 "nom='" + nom + '\'' +
                 ", prenom='" + prenom + '\'' +
                 ", nationalite='" + nationalite + '\'' +
-                ", louv=" + louv +
                 '}';
     }
 
-    public void ajoutOuvrage(Ouvrage ouvrage) {
+    /*public void ajoutOuvrage(Ouvrage ouvrage) {
         this.louv.add(ouvrage);
     }
     public void suppOuvrage(Ouvrage ouvrage){
         this.louv.remove(ouvrage);
+    }*/
+
+    public void addOuvrage(Ouvrage o) {
+        louv.add(o);
+        o.getLaut().add(this);
     }
 
+    public List<Ouvrage> listerOuvrage(){
+        // TODO coder affichage ouvrage
+        return null;
+    }
+
+    public List<Ouvrage> listerOuvrage(TypeOuvrage to, TypeLivre tl){
+        //TODO coder aff ouvrage avec type
+        return null;
+    }
+
+    public List<Ouvrage> listerOuvrage(String genre){
+        // TODO coder affichage ouvrage avec genre
+        return null;
+    }
 }

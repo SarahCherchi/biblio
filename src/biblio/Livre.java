@@ -70,4 +70,9 @@ public class Livre extends Ouvrage{
     public int hashCode() {
         return Objects.hash(isbn);
     }
+
+    public double amendeRetard(int njour){
+        //TODO coder l'amende pour retard par jour
+        return 0;
+    }
 }

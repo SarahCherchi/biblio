@@ -82,4 +82,40 @@ public class Exemplaire {
     public int hashCode() {
         return Objects.hash(matricule);
     }
+
+    public void modifierEtat(String etat){
+        //TODO coder modif de l'état de exemplaire
+    }
+
+    public Lecteur lecteurActuel(){
+        //TODO coder qui est le lecteur ect de l'exemplaire
+        return null;
+    }
+
+    public List<Lecteur> lecteurs(){
+        //TODO listes de tous les lecteurs
+        return null;
+    }
+
+    public void envoiMailLecteurActuel(Mail mail){
+        //TODO coder envoie mail lect act
+    }
+    public void envoiMailLecteurs(Mail mail){
+        //TODO coder envoie mail tous lect
+    }
+
+    public boolean enRetard(){
+        //TODO coder si en retard ou pas
+        return false;
+    }
+
+    public int joursRetard(){
+        //TODO coder nbr jours de retard
+        return 0;
+    }
+
+    public boolean enLocation(){
+        //TODO coder si en loc ou pas
+        return false;
+    }
 }

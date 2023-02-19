@@ -15,6 +15,7 @@ public class Location {
         this.dateRestitution = dateRestitution;
         this.loueur = loueur;
         this.exemplaire = exemplaire;
+        //TODO ajouter lien ici au lieu de faire une méthode add
     }
     public Location(LocalDate dateLoc, LocalDate dateRestitution, double amende,Lecteur loueur, Exemplaire exemplaire) {
         this.dateLoc = dateLoc;
@@ -85,5 +86,13 @@ public class Location {
                 ", loueur=" + loueur +
                 ", exemplaire=" + exemplaire +
                 '}';
+    }
+
+    public void calculerAmende(){
+        //TODO coder le calcul de l'amende
+    }
+
+    public void enregistrerRetour(){
+        //TODO coder l'enregistrement du retour
     }
 }

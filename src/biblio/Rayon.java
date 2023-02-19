@@ -58,4 +58,12 @@ public class Rayon {
    public int hashCode() {
       return Objects.hash(codeRayon);
    }
+
+   public void addExplaire(){
+      //TODO coder ajout explaire à un rayon
+   }
+
+   public void listerExemplaires(){
+      //TODO coder affichage explaires
+   }
 }

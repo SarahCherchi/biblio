@@ -60,4 +60,10 @@ public class CD extends Ouvrage{
     public int hashCode() {
         return Objects.hash(code);
     }
+    
+    public double amendeRetard(int njours){
+        double amende = 0;
+        //TODO coder amende pour retard suivant le nbr de jour
+        return amende;
+    }
 }

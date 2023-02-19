@@ -109,6 +109,19 @@ public abstract class Ouvrage {
                 ", genre='" + genre + '\'' +
                 '}';
     }
+    public List<Exemplaire> listerExemplaires(){
+        //TODO coder la liste des expl
+        return null;
+    }
 
+    public List<Exemplaire> listerExemplaires(boolean enLocation){
+        //TODO coder la liste des expl
+        return null;
+    }
+
+    public double amendeRetard(int njour){
+        //TODO code l'amende par nbr jour retard
+        return 0;
+    }
 
 }
