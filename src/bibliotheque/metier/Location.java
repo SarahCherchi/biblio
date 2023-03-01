@@ -1,36 +1,35 @@
-package biblio;
+package bibliotheque.metier;
 
 import java.time.LocalDate;
 import java.util.Objects;
 
 public class Location {
-    private LocalDate dateLoc;
+    private LocalDate dateLocation;
     private LocalDate dateRestitution;
-    private double amende;
     private Lecteur loueur;
     private Exemplaire exemplaire;
 
-    public Location(LocalDate dateLoc, LocalDate dateRestitution, Lecteur loueur, Exemplaire exemplaire) {
-        this.dateLoc = dateLoc;
+    public Location(LocalDate dateLocation, LocalDate dateRestitution, Lecteur loueur, Exemplaire exemplaire) {
+        this.dateLocation = dateLocation;
         this.dateRestitution = dateRestitution;
         this.loueur = loueur;
         this.exemplaire = exemplaire;
-        //TODO ajouter lien ici au lieu de faire une méthode add
+        this.loueur.getLloc().add(this);
+        this.exemplaire.getLloc().add(this);
     }
-    public Location(LocalDate dateLoc, LocalDate dateRestitution, double amende,Lecteur loueur, Exemplaire exemplaire) {
-        this.dateLoc = dateLoc;
-        this.dateRestitution = dateRestitution;
-        this.amende = amende;
+
+    public Location(Lecteur loueur, Exemplaire exemplaire) {
         this.loueur = loueur;
         this.exemplaire = exemplaire;
+        this.dateLocation=LocalDate.now();
     }
 
-    public LocalDate getDateLoc() {
-        return dateLoc;
+    public LocalDate getDateLocation() {
+        return dateLocation;
     }
 
-    public void setDateLoc(LocalDate dateLoc) {
-        this.dateLoc = dateLoc;
+    public void setDateLocation(LocalDate dateLocation) {
+        this.dateLocation = dateLocation;
     }
 
     public LocalDate getDateRestitution() {
@@ -39,14 +38,6 @@ public class Location {
 
     public void setDateRestitution(LocalDate dateRestitution) {
         this.dateRestitution = dateRestitution;
-    }
-
-    public double getAmende() {
-        return amende;
-    }
-
-    public void setAmende(double amende) {
-        this.amende = amende;
     }
 
     public Lecteur getLoueur() {
@@ -70,29 +61,29 @@ public class Location {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Location location = (Location) o;
-        return Objects.equals(dateLoc, location.dateLoc) && Objects.equals(loueur, location.loueur) && Objects.equals(exemplaire, location.exemplaire);
+        return Objects.equals(dateLocation, location.dateLocation) && Objects.equals(loueur, location.loueur) && Objects.equals(exemplaire, location.exemplaire);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(dateLoc, loueur, exemplaire);
+        return Objects.hash(dateLocation, loueur, exemplaire);
     }
 
     @Override
     public String toString() {
         return "Location{" +
-                "dateLocation=" + dateLoc +
+                "dateLocation=" + dateLocation +
                 ", dateRestitution=" + dateRestitution +
                 ", loueur=" + loueur +
                 ", exemplaire=" + exemplaire +
                 '}';
     }
 
-    public void calculerAmende(){
-        //TODO coder le calcul de l'amende
+    public double calculerAmende(){
+        //TODO calcul amende location sur base dote restitution : la durée du prêt est de 15 jours pour les livres, 3 jours pour les DVD et 7 jours pour les CD
+        return 0;
     }
-
     public void enregistrerRetour(){
-        //TODO coder l'enregistrement du retour
+        //TODO enregistrer retour => la date de restitution devient égale à la date actuelle
     }
 }

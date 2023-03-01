@@ -1,20 +1,21 @@
-package biblio;
+package bibliotheque.metier;
 
 import java.time.LocalDate;
 import java.util.Objects;
 
 public class Livre extends Ouvrage{
     private String isbn;
-    private int nombrePages;
+    private int nbrePages;
     private TypeLivre tl;
     private String resume;
 
-    public Livre(String titre, int ageMin, LocalDate dateParution, double prixLocation, String langue, String genre, String isbn, int nombrePages, TypeLivre tl, String resume) {
+
+    public Livre(String titre, int ageMin, LocalDate dateParution, double prixLocation, String langue, String genre, String isbn, int nbrePages, TypeLivre tl, String resume) {
         super(titre, ageMin, dateParution, TypeOuvrage.LIVRE, prixLocation, langue, genre);
-        this.isbn = isbn;
-        this.nombrePages = nombrePages;
+        this.isbn=isbn;
+        this.nbrePages=nbrePages;
         this.tl=tl;
-        this.resume = resume;
+        this.resume=resume;
     }
 
     public String getIsbn() {
@@ -25,12 +26,12 @@ public class Livre extends Ouvrage{
         this.isbn = isbn;
     }
 
-    public int getNombrePages() {
-        return nombrePages;
+    public int getNbrePages() {
+        return nbrePages;
     }
 
-    public void setNombrePages(int nombrePages) {
-        this.nombrePages = nombrePages;
+    public void setNbrePages(int nbrePages) {
+        this.nbrePages = nbrePages;
     }
 
     public TypeLivre getTl() {
@@ -40,22 +41,13 @@ public class Livre extends Ouvrage{
     public void setTl(TypeLivre tl) {
         this.tl = tl;
     }
+
     public String getResume() {
         return resume;
     }
 
     public void setResume(String resume) {
         this.resume = resume;
-    }
-
-    @Override
-    public String toString() {
-        return super.toString()+ "Livre{" +
-                "isbn='" + isbn + '\'' +
-                ", nbrePages=" + nombrePages +
-                ", tl=" + tl +
-                ", resume='" + resume + '\'' +
-                "} " + super.toString();
     }
 
     @Override
@@ -71,8 +63,19 @@ public class Livre extends Ouvrage{
         return Objects.hash(isbn);
     }
 
-    public double amendeRetard(int njour){
-        //TODO coder l'amende pour retard par jour
+    @Override
+    public double amendeRetard(int njours) {
+        //TODO amendeRetard livre
         return 0;
+    }
+
+    @Override
+    public String toString() {
+        return super.toString()+ "Livre{" +
+                "isbn='" + isbn + '\'' +
+                ", nbrePages=" + nbrePages +
+                ", tl=" + tl +
+                ", resume='" + resume + '\'' +
+                "} " + super.toString();
     }
 }

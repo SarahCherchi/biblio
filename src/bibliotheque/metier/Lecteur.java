@@ -1,4 +1,4 @@
-package biblio;
+package bibliotheque.metier;
 
 import java.time.LocalDate;
 import java.util.ArrayList;
@@ -6,31 +6,31 @@ import java.util.List;
 import java.util.Objects;
 
 public class Lecteur {
-    private int numLecteur;
-    private String nom;
-    private String prenom;
+    private int numlecteur;
+    private  String nom,prenom;
     private LocalDate dn;
-    private String mail;
     private String adresse;
+    private String mail;
     private String tel;
-    private List<Location> lloc = new ArrayList<>();
 
-    public Lecteur(int numLecteur, String nom, String prenom, LocalDate dn, String mail, String adresse, String tel) {
-        this.numLecteur = numLecteur;
+    private List<Location> lloc=new ArrayList<>();
+
+    public Lecteur(int numlecteur, String nom, String prenom, LocalDate dn, String adresse, String mail, String tel) {
+        this.numlecteur = numlecteur;
         this.nom = nom;
         this.prenom = prenom;
         this.dn = dn;
-        this.mail = mail;
         this.adresse = adresse;
+        this.mail = mail;
         this.tel = tel;
     }
 
-    public int getNumLecteur() {
-        return numLecteur;
+    public int getNumlecteur() {
+        return numlecteur;
     }
 
-    public void setNumLecteur(int numLecteur) {
-        this.numLecteur = numLecteur;
+    public void setNumlecteur(int numlecteur) {
+        this.numlecteur = numlecteur;
     }
 
     public String getNom() {
@@ -56,13 +56,6 @@ public class Lecteur {
     public void setDn(LocalDate dn) {
         this.dn = dn;
     }
-    public String getMail() {
-        return mail;
-    }
-
-    public void setMail(String mail) {
-        this.mail = mail;
-    }
 
     public String getAdresse() {
         return adresse;
@@ -70,6 +63,14 @@ public class Lecteur {
 
     public void setAdresse(String adresse) {
         this.adresse = adresse;
+    }
+
+    public String getMail() {
+        return mail;
+    }
+
+    public void setMail(String mail) {
+        this.mail = mail;
     }
 
     public String getTel() {
@@ -91,12 +92,12 @@ public class Lecteur {
     @Override
     public String toString() {
         return "Lecteur{" +
-                "numLecteur='" + numLecteur + '\'' +
+                "numlecteur=" + numlecteur +
                 ", nom='" + nom + '\'' +
                 ", prenom='" + prenom + '\'' +
-                ", dn='" + dn + '\'' +
-                ", mail='" + mail + '\'' +
+                ", dn=" + dn +
                 ", adresse='" + adresse + '\'' +
+                ", mail='" + mail + '\'' +
                 ", tel='" + tel + '\'' +
                 '}';
     }
@@ -106,21 +107,31 @@ public class Lecteur {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Lecteur lecteur = (Lecteur) o;
-        return Objects.equals(numLecteur, lecteur.numLecteur);
+        return numlecteur == lecteur.numlecteur;
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(numLecteur);
+        return Objects.hash(numlecteur);
     }
 
-    public List<Exemplaire> listerExemplairesEnLocation(){
-        //TODO coder la liste expl en loc
-        return null;
+    public List<Exemplaire> listerExemplairesEnLocation() {
+        List<Exemplaire> exemplairesEnLocation = new ArrayList<>();
+        for (Location location : lloc) {
+            if (location.getDateRestitution() == null) {
+                exemplairesEnLocation.add(location.getExemplaire());
+            }
+        }
+        return exemplairesEnLocation;
     }
 
-    public List<Exemplaire> listerExemplairesLoues(){
-        //TODO code la liste empl loues
-        return null;
+    public List<Exemplaire> listerExemplairesEnLoues() {
+        List<Exemplaire> exemplairesLoues = new ArrayList<>();
+        for (Location location : lloc) {
+            if (location.getDateRestitution() != null) {
+                exemplairesLoues.add(location.getExemplaire());
+            }
+        }
+        return exemplairesLoues;
     }
 }

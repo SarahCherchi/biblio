@@ -1,4 +1,4 @@
-package biblio;
+package bibliotheque.metier;
 
 import java.time.LocalDate;
 import java.util.ArrayList;
@@ -6,13 +6,13 @@ import java.util.List;
 import java.util.Objects;
 
 public class DVD extends Ouvrage{
+
     private long code;
     private String dureeTotale;
     private byte nbreBonus;
-    private List<String> autresLangues = new ArrayList<>();
-    private List<String> sousTitres = new ArrayList<>();
-
-    public DVD(String titre, int ageMin, LocalDate dateParution, double prixLocation, String langue, String genre, long code, String dureeTotale, byte nbreBonus) {
+    private List<String> autresLangues=new ArrayList<>();
+    private List<String> sousTitres=new ArrayList<>();
+    public DVD(String titre, int ageMin, LocalDate dateParution, double prixLocation, String langue, String genre,long code,String dureeTotale,byte nbreBonus) {
         super(titre, ageMin, dateParution, TypeOuvrage.DVD, prixLocation, langue, genre);
         this.code=code;
         this.dureeTotale=dureeTotale;
@@ -60,30 +60,30 @@ public class DVD extends Ouvrage{
     }
 
     @Override
-    public String toString() {
-        return super.toString()+"DVD{" +
-                "code=" + code +
-                ", dureeTotale='" + dureeTotale + '\'' +
-                ", nbreBonus=" + nbreBonus +
-                "} " + super.toString();
-    }
-
-    @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         DVD dvd = (DVD) o;
-        return Objects.equals(code, dvd.code);
+        return code == dvd.code;
     }
 
     @Override
     public int hashCode() {
         return Objects.hash(code);
     }
-
-    public double amendeRetard(int njours){
-        double amende = 0;
-        //TODO coder amende pour retard suivant le nbr de jour
+    @Override
+    public double amendeRetard(int njours) {
+        double amende = njours * 1.0;
         return amende;
+    }
+    @Override
+    public String toString() {
+        return super.toString()+"DVD{" +
+                "code=" + code +
+                ", dureeTotale='" + dureeTotale + '\'' +
+                ", nbreBonus=" + nbreBonus +
+                ", autresLangues=" + autresLangues +
+                ", sousTitres=" + sousTitres +
+                "} " + super.toString();
     }
 }
