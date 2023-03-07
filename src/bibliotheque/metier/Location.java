@@ -84,6 +84,6 @@ public class Location {
         return 0;
     }
     public void enregistrerRetour(){
-        //TODO enregistrer retour => la date de restitution devient égale à la date actuelle
+        this.setDateRestitution(LocalDate.now());
     }
 }

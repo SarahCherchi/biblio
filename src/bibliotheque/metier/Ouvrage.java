@@ -132,12 +132,20 @@ public abstract class Ouvrage {
         e.setOuvrage(null);
     }
     public List<Exemplaire>listerExemplaires(){
-        //TODO lister exemplaires ouvrage
-        return null;
+        List<Exemplaire> exemplaires = new ArrayList<>();
+        for (Exemplaire e : lex) {
+            exemplaires.add(e);
+        }
+        return exemplaires;
     }
 
     public List<Exemplaire>listerExemplaires(boolean enLocation){
-        //TODO lister exemplaires ouvrage en location
-        return null;
+        List<Exemplaire> exemplaires = new ArrayList<>();
+        for (Exemplaire e : lex) {
+            if (e.getLloc().equals(enLocation)) {
+                exemplaires.add(e);
+            }
+        }
+        return exemplaires;
     }
 }

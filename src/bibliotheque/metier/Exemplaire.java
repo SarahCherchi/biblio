@@ -90,7 +90,7 @@ public class Exemplaire {
     }
 
     public void modifierEtat(String etat){
-        //TODO modifier etat exemplaire
+        this.descriptionEtat = etat;
     }
 
     public Lecteur lecteurActuel(){
@@ -98,12 +98,15 @@ public class Exemplaire {
         return null;
     }
     public List<Lecteur> lecteurs(){
-        //lecteurs exemplaire
-        return null;
+        List<Lecteur> lecteurs = new ArrayList<>();
+        for (Location loc : lloc) {
+            lecteurs.add(loc.getLoueur());
+        }
+        return lecteurs;
     }
 
     public void envoiMailLecteurActuel(Mail mail){
-        //TODO envoi mail lecteur exemplaire
+        //TODO envoi mail lecteurs actuel exemplaire
     }
     public void envoiMailLecteurs(Mail mail){
         //TODO envoi mail lecteurs exemplaire
@@ -121,7 +124,11 @@ public class Exemplaire {
 
 
     public boolean enLocation(){
-        //TODO en location exemplaires
+        for(Location loc: lloc){
+            if(loc.getDateRestitution() == null){
+                return true;
+            }
+        }
         return false;
     }
 
