@@ -101,6 +101,9 @@ public abstract class Ouvrage {
 
 
     public abstract double amendeRetard(int njours);
+
+    public abstract int njlocmax();
+
     @Override
     public String toString() {
         return "Ouvrage{" +
@@ -132,20 +135,14 @@ public abstract class Ouvrage {
         e.setOuvrage(null);
     }
     public List<Exemplaire>listerExemplaires(){
-        List<Exemplaire> exemplaires = new ArrayList<>();
-        for (Exemplaire e : lex) {
-            exemplaires.add(e);
-        }
-        return exemplaires;
+        return lex;
     }
 
     public List<Exemplaire>listerExemplaires(boolean enLocation){
-        List<Exemplaire> exemplaires = new ArrayList<>();
-        for (Exemplaire e : lex) {
-            if (e.getLloc().equals(enLocation)) {
-                exemplaires.add(e);
-            }
+        List<Exemplaire> lex2 = new ArrayList<>();
+        for(Exemplaire ex : lex){
+            if(ex.enLocation()==enLocation) lex2.add(ex);
         }
-        return exemplaires;
+        return lex2;
     }
 }

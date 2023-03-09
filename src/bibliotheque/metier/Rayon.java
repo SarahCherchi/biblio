@@ -67,12 +67,8 @@ public class Rayon {
       this.lex = lex;
    }
 
-   public List<Exemplaire> listerExemplaires() {
-      List<Exemplaire> exemplaires = new ArrayList<>();
-      for (Exemplaire exemplaire : lex) {
-         exemplaires.add(exemplaire);
-      }
-      return exemplaires;
+   public List<Exemplaire>listerExemplaires(){
+      return lex;
    }
 
 

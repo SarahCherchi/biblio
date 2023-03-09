@@ -3,6 +3,8 @@ package bibliotheque.metier;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
+import static bibliotheque.metier.TypeOuvrage.*;
+
 
 public class Auteur {
     private  String nom,prenom;
@@ -82,38 +84,32 @@ public class Auteur {
     }
 
     public List<Ouvrage> listerOuvrages(){
+
         return louvrage;
     }
 
     public List<Ouvrage> listerOuvrages(TypeOuvrage to){
-        List<Ouvrage> listTypeOuvrages = new ArrayList<>();
-        for (Ouvrage o : louvrage) {
-            if (o.getTo().equals(to)) {
-                listTypeOuvrages.add(o);
-            }
+        List<Ouvrage> lot = new ArrayList<>();
+        for(Ouvrage o : louvrage){
+            if(o.getTo().equals(to)) lot.add(o);
         }
-        return listTypeOuvrages;
+        return lot;
     }
     public List<Livre> listerLivres(TypeLivre tl){
-        List<Livre> livresType = new ArrayList<>();
-        for (Ouvrage o : louvrage) {
-            if (o instanceof Livre) {
-                Livre livre = (Livre) o;
-                if (livre.getTl().equals(tl)) {
-                    livresType.add(livre);
-                }
+        List<Livre>ll = new ArrayList<>();
+        for(Ouvrage o : louvrage){
+            if(o.getTo().equals(LIVRE)) {
+                Livre l = (Livre)o;
+                if(l.getTl().equals(tl)) ll.add(l);
             }
         }
-        return livresType;
+        return ll;
     }
-
     public List<Ouvrage> listerOuvrages(String genre){
-        List<Ouvrage> ouvragesGenre = new ArrayList<>();
-        for (Ouvrage o : louvrage) {
-            if (o.getGenre().equals(genre)) {
-                ouvragesGenre.add(o);
-            }
+        List<Ouvrage> lot = new ArrayList<>();
+        for(Ouvrage o : louvrage){
+            if(o.getGenre().equals(genre)) lot.add(o);
         }
-        return ouvragesGenre;
+        return lot;
     }
 }
