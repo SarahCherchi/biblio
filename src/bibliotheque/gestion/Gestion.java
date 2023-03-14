@@ -100,12 +100,30 @@ public class Gestion {
     }
 
     private void gestRestitution() {
-        //TODO lister exemplaires en location , choisir l'un d'entre eux, enregistrer sa restitution et éventuellement changer état
+        List<Exemplaire> exEnLoc = lex.stream().filter(Exemplaire::enLocation).toList();
+        if (exEnLoc.isEmpty()) {
+            System.out.println("Aucun exemplaire en location.");
+        }
+
+        int choix = Utilitaire.choixListe(exEnLoc);
+        Exemplaire ex = exEnLoc.get(choix - 1);
+        Location loc = null;
+        for (Location l : lloc) {
+            if (l.getExemplaire().equals(ex)) {
+                loc = l;
+                break;
+            }
+        }
+        if (loc == null){
+            System.out.println("Aucune location en cours pour cet exemplaire.");
+        }
+        loc.setDateRestitution(LocalDate.now());
+        System.out.println("Restitution enregistrée.");
     }
 
     private void gestLocations() {
+        List<Exemplaire> exemplairesLibres = lex.stream().filter(ex -> !ex.enLocation()).toList();
         int choix;
-        //TODO ne lister que les exemplaires libres et les trier par matricule
         choix = Utilitaire.choixListe(lex);
         if(lex.get(choix).enLocation()){
             System.out.println("exemplaire en location");
